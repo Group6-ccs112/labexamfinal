@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::all();
-        return response()->json($doctors);
+        $patients = Patient::all();
+        return response()->json($patients);
     }
 
     public function show($id)
     {
-        $doctor = Doctor::findOrFail($id);
-        return response()->json($doctor);
+        $patient = Patient::findOrFail($id);
+        return response()->json($patient);
     }
 
     public function store(Request $request)
     {
-        Doctor::create([
+        Patient::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'specialization' => $request->specialization,
@@ -31,28 +31,28 @@ class PatientController extends Controller
             
         ]);
 
-        return response()->json(['message' => 'Doctor added successfully'], 201);
+        return response()->json(['message' => 'Patient added successfully'], 201);
     }
 
     public function update(Request $request, $id)
     {
-        $doctor = Product::findOrFail($id);
-        $doctor->first_name = $request->input('first_name');
-        $doctor->last_name = $request->input('last_name');
-        $doctor->specialization = $request->input('specialization');
-        $doctor->license_number = $request->input('specialization');
-        $doctor->phone = $request->input('phone');
-        $doctor->email = $request->input('email');
-        $doctor->save();
+        $patient = Product::findOrFail($id);
+        $patient->first_name = $request->input('first_name');
+        $patient->last_name = $request->input('last_name');
+        $patient->specialization = $request->input('specialization');
+        $patient->license_number = $request->input('specialization');
+        $patient->phone = $request->input('phone');
+        $patient->email = $request->input('email');
+        $patient->save();
 
-        return response()->json(['message' => 'Doctor updated successfully', 'doctor' => $doctor]);
+        return response()->json(['message' => 'Patient updated successfully', 'Patient' => $patient]);
     }
 
     public function destroy($id)
     {
-        $doctor = Doctor::findOrFail($id);
-        $doctor->delete();
-        return response()->json(['message' => 'Doctor removed successfully']);
+        $patient = Patient::findOrFail($id);
+        $patient->delete();
+        return response()->json(['message' => 'Patient removed successfully']);
     }
 
 }
