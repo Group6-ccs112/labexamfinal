@@ -36,7 +36,7 @@ class DoctorController extends Controller
 
     public function update(Request $request, $id)
     {
-        $doctor = Product::findOrFail($id);
+        $doctor = Doctor::findOrFail($id);
         $doctor->first_name = $request->input('first_name');
         $doctor->last_name = $request->input('last_name');
         $doctor->specialization = $request->input('specialization');

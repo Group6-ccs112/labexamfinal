@@ -36,7 +36,7 @@ class Medical_RecordController extends Controller
 
     public function update(Request $request, $id)
     {
-        $medical_record = Product::findOrFail($id);
+        $medical_record = Medical_Record::findOrFail($id);
         $medical_record->first_name = $request->input('first_name');
         $medical_record->last_name = $request->input('last_name');
         $medical_record->specialization = $request->input('specialization');

@@ -20,3 +20,9 @@ Route::post('/login', [UserController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
+
+Route::get('/doctors', [ProductController::class, 'index']);
+Route::get('/doctors/{id}', [ProductController::class, 'show']);
+Route::post('/addDoctors', [ProductController::class, 'store']);
+Route::put('/doctors/{id}', [ProductController::class, 'update']);
+Route::delete('/removeDoctor/{id}', [ProductController::class, 'destroy']);
