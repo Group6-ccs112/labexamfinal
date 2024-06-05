@@ -24,6 +24,11 @@ class DoctorController extends Controller
         Doctor::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'specialization' => $request->specialization,
+            'license_number' => $request->license_number,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            
         ]);
 
         return response()->json(['message' => 'Doctor added successfully'], 201);
@@ -31,11 +36,16 @@ class DoctorController extends Controller
 
     public function update(Request $request, $id)
     {
-        $doctor = Doctor::findOrFail($id);
-        $doctor->quantity = $request->input('quantity');
+        $doctor = Product::findOrFail($id);
+        $doctor->first_name = $request->input('first_name');
+        $doctor->last_name = $request->input('last_name');
+        $doctor->specialization = $request->input('specialization');
+        $doctor->license_number = $request->input('specialization');
+        $doctor->phone = $request->input('phone');
+        $doctor->email = $request->input('email');
         $doctor->save();
 
-        return response()->json(['message' => 'Doctor item updated successfully', 'Doctor' => $doctor]);
+        return response()->json(['message' => 'Doctor updated successfully', 'doctor' => $doctor]);
     }
 
     public function destroy($id)
