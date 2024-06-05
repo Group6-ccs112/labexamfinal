@@ -2,62 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
-class CartController extends Controller
+class DoctorController extends Controller
 {
     public function index()
     {
-        $carts = Cart::all();
-        return response()->json($carts);
+        $doctors = Doctor::all();
+        return response()->json($doctors);
     }
 
     public function show($id)
     {
-        $cart = Cart::findOrFail($id);
-        return response()->json($cart);
+        $doctor = Doctor::findOrFail($id);
+        return response()->json($doctor);
     }
 
     public function store(Request $request)
     {
-        // Check if the product already exists in the cart
-        $cartItem = Cart::where('product_id', $request->product_id)->first();
+        Doctor::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+        ]);
 
-        if ($cartItem) {
-            // If the product exists, update the quantity by adding the new quantity
-            $cartItem->quantity += $request->quantity;
-            $cartItem->save();
-        } else {
-            // If the product does not exist, create a new cart item
-            Cart::create([
-                'product_id' => $request->product_id,
-                'quantity' => $request->quantity,
-            ]);
-        }
-
-        return response()->json(['message' => 'Product added to cart successfully'], 201);
+        return response()->json(['message' => 'Doctor added successfully'], 201);
     }
 
     public function update(Request $request, $id)
     {
-        $cart = Cart::findOrFail($id);
-        $cart->quantity = $request->input('quantity');
-        $cart->save();
+        $doctor = Doctor::findOrFail($id);
+        $doctor->quantity = $request->input('quantity');
+        $doctor->save();
 
-        return response()->json(['message' => 'Cart item updated successfully', 'cart' => $cart]);
+        return response()->json(['message' => 'Doctor item updated successfully', 'Doctor' => $doctor]);
     }
 
     public function destroy($id)
     {
-        $cart = Cart::findOrFail($id);
-        $cart->delete();
-        return response()->json(['message' => 'Cart removed successfully']);
+        $doctor = Doctor::findOrFail($id);
+        $doctor->delete();
+        return response()->json(['message' => 'Doctor removed successfully']);
     }
 
-    public function removeAll()
-    {
-        Cart::truncate();
-        return response()->json(['message' => 'All carts removed successfully']);
-    }
 }
