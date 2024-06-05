@@ -9,10 +9,6 @@ class Doctor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'description'];
+    protected $fillable = ['first_name', 'last_name', 'specialization', 'license_number', 'phone', 'email'];
 
-    public function carts()
-    {
-        return $this->hasMany(Cart::class);
-    }
 }
