@@ -11,4 +11,13 @@ class Patient extends Model
 
     protected $fillable = ['first_name', 'last_name', 'date_of_birth', 'gender', 'address', 'phone', 'email', 'emergency_contact', 'medical_history'];
 
+    public function patients()
+    {
+        return $this->hasMany(Patient::class);
+    }
+    
+    public function doctors()
+    {
+        return $this->hasMany(Doctor::class);
+    }
 }
