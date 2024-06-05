@@ -26,25 +26,25 @@ Route::get('/doctors', [DoctorController::class, 'index']);
 Route::get('/doctors/{id}', [DoctorController::class, 'show']);
 Route::post('/addDoctors', [DoctorController::class, 'store']);
 Route::put('/doctors/{id}', [DoctorController::class, 'update']);
-Route::delete('/removeDoctor/{id}', [ProductController::class, 'destroy']);
+Route::delete('/removeDoctor/{id}', [DoctorController::class, 'destroy']);
 
 // For patient api end points
-Route::get('/patients', [ProductController::class, 'index']);
-Route::get('/patients/{id}', [ProductController::class, 'show']);
-Route::post('/addPatients', [ProductController::class, 'store']);
-Route::put('/patients/{id}', [ProductController::class, 'update']);
-Route::delete('/removePatient/{id}', [ProductController::class, 'destroy']);
+Route::get('/patients', [PatientController::class, 'index']);
+Route::get('/patients/{id}', [PatientController::class, 'show']);
+Route::post('/addPatients', [PatientController::class, 'store']);
+Route::put('/patients/{id}', [PatientController::class, 'update']);
+Route::delete('/removePatient/{id}', [PatientController::class, 'destroy']);
 
 // For appointment record api end points
-Route::get('/patients', [ProductController::class, 'index']);
-Route::get('/patients/{id}', [ProductController::class, 'show']);
-Route::post('/addPatients', [ProductController::class, 'store']);
-Route::put('/patients/{id}', [ProductController::class, 'update']);
-Route::delete('/removePatient/{id}', [ProductController::class, 'destroy']);
+Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::get('/appointments/{id}', [AppointmentController::class, 'show']);
+Route::post('/addAppointments', [AppointmentController::class, 'store']);
+Route::put('/appointments/{id}', [AppointmentController::class, 'update']);
+Route::delete('/removeAppointments/{id}', [AppointmentController::class, 'destroy']);
 
-// For meidcal record api end points
-Route::get('/patients', [ProductController::class, 'index']);
-Route::get('/patients/{id}', [ProductController::class, 'show']);
-Route::post('/addPatients', [ProductController::class, 'store']);
-Route::put('/patients/{id}', [ProductController::class, 'update']);
-Route::delete('/removePatient/{id}', [ProductController::class, 'destroy']);
+// For medical record api end points
+Route::get('/medical_records', [MedicalRecordController::class, 'index']);
+Route::get('/medical_records/{id}', [MedicalRecordController::class, 'show']);
+Route::post('/addMedical_records', [MedicalRecordController::class, 'store']);
+Route::put('/medical_records/{id}', [MedicalRecordController::class, 'update']);
+Route::delete('/removeMedical_records/{id}', [MedicalRecordController::class, 'destroy']);
