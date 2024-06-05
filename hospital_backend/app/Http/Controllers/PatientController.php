@@ -40,7 +40,7 @@ class PatientController extends Controller
         $patient->first_name = $request->input('first_name');
         $patient->last_name = $request->input('last_name');
         $patient->specialization = $request->input('specialization');
-        $patient->license_number = $request->input('specialization');
+        $patient->license_number = $request->input('license_number');
         $patient->phone = $request->input('phone');
         $patient->email = $request->input('email');
         $patient->save();
