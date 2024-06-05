@@ -21,8 +21,14 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/logout', [UserController::class, 'logout']);
 });
 
-Route::get('/doctors', [ProductController::class, 'index']);
-Route::get('/doctors/{id}', [ProductController::class, 'show']);
-Route::post('/addDoctors', [ProductController::class, 'store']);
-Route::put('/doctors/{id}', [ProductController::class, 'update']);
+Route::get('/doctors', [DoctorController::class, 'index']);
+Route::get('/doctors/{id}', [DoctorController::class, 'show']);
+Route::post('/addDoctors', [DoctorController::class, 'store']);
+Route::put('/doctors/{id}', [DoctorController::class, 'update']);
 Route::delete('/removeDoctor/{id}', [ProductController::class, 'destroy']);
+
+Route::get('/patients', [ProductController::class, 'index']);
+Route::get('/patients/{id}', [ProductController::class, 'show']);
+Route::post('/addPatients', [ProductController::class, 'store']);
+Route::put('/patients/{id}', [ProductController::class, 'update']);
+Route::delete('/removePatient/{id}', [ProductController::class, 'destroy']);
