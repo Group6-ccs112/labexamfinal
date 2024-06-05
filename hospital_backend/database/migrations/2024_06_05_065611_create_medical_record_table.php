@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicalRecordsTable extends Migration
+class createmedicalrecordstable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMedicalRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('medical_records', function (Blueprint $table) {
+        Schema::create('medicalrecords', function (Blueprint $table) {
             $table->id(); // id: Unique identifier for the medical record
             $table->unsignedBigInteger('patient_id'); // patient_id: Reference to the patient to whom the medical record belongs
             $table->unsignedBigInteger('doctor_id'); // doctor_id: Reference to the doctor who created the medical record
@@ -36,6 +36,6 @@ class CreateMedicalRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medical_records');
+        Schema::dropIfExists('medicalrecords');
     }
 }

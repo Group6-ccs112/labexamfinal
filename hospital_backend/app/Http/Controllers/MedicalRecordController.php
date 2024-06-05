@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Medical_Record;
 use Illuminate\Http\Request;
 
-class Medical_RecordController extends Controller
+class MedicalRecordController extends Controller
 {
     public function index()
     {
@@ -39,10 +39,10 @@ class Medical_RecordController extends Controller
         $medical_record = Medical_Record::findOrFail($id);
         $medical_record->first_name = $request->input('first_name');
         $medical_record->last_name = $request->input('last_name');
-        $medical_record->specialization = $request->input('specialization');
-        $medical_record->license_number = $request->input('specialization');
-        $medical_record->phone = $request->input('phone');
-        $medical_record->email = $request->input('email');
+        $medical_record->visit_date = $request->input('visit_date');
+        $medical_record->diagnosis = $request->input('diagnosis');
+        $medical_record->treatment = $request->input('treatment');
+        $medical_record->notes = $request->input('notes');
         $medical_record->save();
 
         return response()->json(['message' => 'Medical_Record updated successfully', 'Medical_Record' => $medical_record]);
